@@ -2,14 +2,19 @@
   <div v-if="cursor_show" class="inverter-cursor" :class="{ 'resaltar-cursor': resaltar }" :style="estilo"></div>
   </template>
   
-  <script setup>
+<script setup>
   import { ref, onMounted } from 'vue'
   
-  const estilo = ref({ left: "555px", top: "570.033px", x_offset: -15, y_offset: -15 })
-  const cursor_show = ref(false)
-  const resaltar = ref(false)
+  const estilo       = ref({ left: "555px", top: "570.033px", x_offset: -15, y_offset: -15 })
+  const cursor_show  = ref(false)
+  const resaltar     = ref(false)
   const ultimo_tmp_a = ref(0)
-  
+  const props        = defineProps(['config'])
+
+  const config = ref( (props?.config) ? props.config : {
+    "highlighted_tags": [ 'a', 'button' ]
+  } )
+
   onMounted(()=>{
       document.addEventListener('mousemove', (e) => {
           estilo.value.left = (e.clientX + estilo.value.x_offset) + 'px'
@@ -19,14 +24,12 @@
           if (new Date().getTime() - ultimo_tmp_a.value > 200)
               resaltar.value = false
       })
-  
-      document.querySelectorAll('a').forEach(function(enlace) {
+      
+      for (let i=0; i < config.value.highlighted_tags.length; i++) {
+        document.querySelectorAll(config.value.highlighted_tags[i]).forEach(function(enlace) {
           resaltados(enlace)
-      })
-  
-      document.querySelectorAll('button').forEach(function(enlace) {
-          resaltados(enlace)
-      })
+        })
+      }
   })
   
   function resaltados(obj){
@@ -46,15 +49,15 @@
     background-color: white;
     mix-blend-mode: difference;
     transition: transform 0.25s ease,top 0.2s ease-out,left 0.2s ease-out, width .2s, height .2s;
-    width: 20px;
-    height: 20px;
+    width: 1rem;
+    height: 1rem;
     z-index: 5000;
     pointer-events: none;
 }
 
 .resaltar-cursor{
-    width: 40px !important;
-    height: 40px !important;
+    width: 2rem !important;
+    height: 2rem !important;
 }
 
 html, body, button, a{
