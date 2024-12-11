@@ -1,6 +1,7 @@
 import vue from 'rollup-plugin-vue'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-import css from 'rollup-plugin-css-only'
+import resolve from "@rollup/plugin-node-resolve";
+import postcss from "rollup-plugin-postcss";
 
 export default [
   {
@@ -16,9 +17,12 @@ export default [
       }
     ],
     plugins: [
-      //terser(), 
-      css(),
-      vue( { css: { extract: false } }), peerDepsExternal()
+      resolve(),
+      postcss({
+        include: "**src/custom-cursor-style.css",
+        extract: resolve('dist/custom-cursor-style.css')
+      }),
+      vue(), peerDepsExternal()
     ],
     external: [ 'vue' ]
   }

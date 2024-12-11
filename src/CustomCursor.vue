@@ -38,23 +38,3 @@ function resaltados(obj){
     })
 }
 </script>
-
-<style scoped>
-.inverter-cursor{
-    position: fixed;
-    border-radius: 50%;
-    background-color: white;
-    mix-blend-mode: difference;
-    transition: transform 0.25s ease,top 0.2s ease-out,left 0.2s ease-out, width .2s, height .2s;
-    width: 20px;
-    height: 20px;
-    z-index: 5000;
-    pointer-events: none;
-}
-
-.resaltar-cursor{
-    
-    width: 40px !important;
-    height: 40px !important;
-}
-</style>
