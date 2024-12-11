@@ -11,7 +11,10 @@
 }
 
 .resaltar-cursor{
-    
     width: 40px !important;
     height: 40px !important;
+}
+
+html, body{
+    cursor: none !important;
 }
