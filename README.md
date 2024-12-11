@@ -29,6 +29,9 @@ En App.vue incluir:
 |-----------|-----------|-----------|-----------|
 | highlighted_tags | Array   |  [ "a", "button" ]  | Define que etiquetas HTML serán resaltadas |
 
+# Ej. en funcionamiento
+- https://cv.greenborn.com.ar/luciano_vega
+
 # Change log
-- **0.1.5**: Se agregaopción de configuración "highlighted_tags"
+- **0.1.5**: Se agrega opción de configuración "highlighted_tags"
 - **0.1.4**: Versión funcional, se actualiza documentación
