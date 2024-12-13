@@ -5,17 +5,28 @@
 <script setup>
   import { ref, onMounted } from 'vue'
   
-  const estilo       = ref({ left: "555px", top: "570.033px", x_offset: -15, y_offset: -15 })
+  const props        = defineProps(['config'])
+  const config = ref({
+    "highlighted_tags": (props?.config?.highlighted_tags) ? props.config.highlighted_tags : [ 'a', 'button' ],
+    "transform_time":   (props?.config?.transform_time) ? props.config.transform_time :'.2s'
+  } )
+
+  const estilo       = ref({ 
+    left: "555px", 
+    top: "570.033px", 
+    x_offset: -15, 
+    y_offset: -15,
+  })
   const cursor_show  = ref(false)
   const resaltar     = ref(false)
   const ultimo_tmp_a = ref(0)
-  const props        = defineProps(['config'])
-
-  const config = ref( (props?.config) ? props.config : {
-    "highlighted_tags": [ 'a', 'button' ]
-  } )
-
+  
   onMounted(()=>{
+      estilo.value['transition'] = 'transform '+config.value.transform_time+' ease,top '
+        +config.value.transform_time+' ease-out,left '
+        +config.value.transform_time+' ease-out, width '+config.value.transform_time+', height '+config.value.transform_time
+
+      console.log(estilo.value)
       document.addEventListener('mousemove', (e) => {
           estilo.value.left = (e.clientX + estilo.value.x_offset) + 'px'
           estilo.value.top = (e.clientY + estilo.value.y_offset) + 'px'
@@ -48,7 +59,6 @@
     border-radius: 50%;
     background-color: white;
     mix-blend-mode: difference;
-    transition: transform 0.25s ease,top 0.2s ease-out,left 0.2s ease-out, width .2s, height .2s;
     width: 1rem;
     height: 1rem;
     z-index: 5000;

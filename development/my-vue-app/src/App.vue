@@ -3,7 +3,7 @@ import CustomCursor from './components/CustomCursor.vue'
 </script>
 
 <template>
-  <CustomCursor :config='{ highlighted_tags: [ "a", "button" ] }' />
+  <CustomCursor :config='{ highlighted_tags: [ "a", "button" ], transform_time: ".1s" }' />
 
   <a href="https://github.com/Greenborn/vue-custom-cursor"> GitHub</a>
   <button>Botón</button>

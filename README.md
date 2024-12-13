@@ -19,7 +19,8 @@ createApp(App).use(VueCustomCursor).mount('#app')
 En App.vue incluir:
 ```
 <CustomCursor :config='{
-    highlighted_tags: [ "a", "button" ]
+    highlighted_tags: [ "a", "button" ],
+    transform_time: ".1s"
 }'/>
 ```
 
@@ -28,10 +29,12 @@ En App.vue incluir:
 | Propiedad | Tipo de Dato  | Valor por Defecto | Descripción |
 |-----------|-----------|-----------|-----------|
 | highlighted_tags | Array   |  [ "a", "button" ]  | Define que etiquetas HTML serán resaltadas |
+| transform_time | String   |  ".1s"  | Define el tiempo de la transformación CSS, en la practica implica modificar la velocidad de desplazamiento |
 
 # Ej. en funcionamiento
 - https://cv.greenborn.com.ar/luciano_vega
 
 # Change log
+- **0.1.7**: Se agrega opción de configuración "transform_time"
 - **0.1.5**: Se agrega opción de configuración "highlighted_tags"
 - **0.1.4**: Versión funcional, se actualiza documentación
