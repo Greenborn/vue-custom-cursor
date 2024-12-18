@@ -1,6 +1,6 @@
 {
     "name": "@greenborn/vue-custom-cursor",
-    "version": "0.1.7",
+    "version": "0.1.9",
     "description": "Componente Vue para cursor personalizado.",
     "main": "dist/library.js",
     "module": "dist/library.mjs",

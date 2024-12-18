@@ -28,6 +28,9 @@
 
       console.log(estilo.value)
       document.addEventListener('mousemove', (e) => {
+          if (window.innerWidth < 900) 
+            return true
+          
           estilo.value.left = (e.clientX + estilo.value.x_offset) + 'px'
           estilo.value.top = (e.clientY + estilo.value.y_offset) + 'px'
           cursor_show.value = true
