@@ -8,7 +8,10 @@ import { ref, onMounted } from 'vue'
 const props = defineProps(['config'])
 const config = ref({
   "highlighted_tags": (props?.config?.highlighted_tags) ? props.config.highlighted_tags : ['a', 'button'],
-  "transform_time": (props?.config?.transform_time) ? props.config.transform_time : '.2s'
+  "transform_time": (props?.config?.transform_time) ? props.config.transform_time : '.2s',
+  "click_effect_enabled": (props?.config?.click_effect) ? props.config.click_effect : true,
+  "click_effect_offset_x": (props?.config?.click_effect_offset_x) ? props.config.click_effect_offset_x : -10,
+  "click_effect_offset_y": (props?.config?.click_effect_offset_y) ? props.config.click_effect_offset_y : -10,
 })
 
 const estilo = ref({
@@ -21,7 +24,18 @@ const cursor_show = ref(false)
 const resaltar = ref(false)
 const ultimo_tmp_a = ref(0)
 
+function clickEffect(e) {
+  var d = document.createElement("div");
+  d.className = "clickEffect"
+  d.style.top = (e.clientY + config.value.click_effect_offset_y) + "px"
+  d.style.left = (e.clientX + config.value.click_effect_offset_x)+ "px"
+  document.body.appendChild(d);
+  d.addEventListener('animationend', function () { d.parentElement.removeChild(d); }.bind(this));
+}
+
 onMounted(() => {
+  if (config.value.click_effect_enabled)
+    document.addEventListener('click', clickEffect)
   estilo.value['transition'] = 'transform ' + config.value.transform_time + ' ease,top '
     + config.value.transform_time + ' ease-out,left '
     + config.value.transform_time + ' ease-out, width ' + config.value.transform_time + ', height ' + config.value.transform_time
