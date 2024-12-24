@@ -38,7 +38,8 @@ En App.vue incluir:
 - https://cv.greenborn.com.ar/luciano_vega
 
 # Change log
-- **0.1.10**: Se agrega efecto de click y se agregan propiedades de configuración reclacionadas
+- **0.1.11** Se soluciona bug al click_effect_enabled en false
+- **0.1.10**: Se agrega efecto de click y se agregan propiedades de configuración relacionadas
 - **0.1.9**: En ancho de pantalla < 900px se oculta el cursor
 - **0.1.7**: Se agrega opción de configuración "transform_time"
 - **0.1.5**: Se agrega opción de configuración "highlighted_tags"

@@ -9,7 +9,7 @@ const props = defineProps(['config'])
 const config = ref({
   "highlighted_tags": (props?.config?.highlighted_tags) ? props.config.highlighted_tags : ['a', 'button'],
   "transform_time": (props?.config?.transform_time) ? props.config.transform_time : '.2s',
-  "click_effect_enabled": (props?.config?.click_effect) ? props.config.click_effect : true,
+  "click_effect_enabled": (props?.config?.click_effect === true),
   "click_effect_offset_x": (props?.config?.click_effect_offset_x) ? props.config.click_effect_offset_x : -10,
   "click_effect_offset_y": (props?.config?.click_effect_offset_y) ? props.config.click_effect_offset_y : -10,
 })
